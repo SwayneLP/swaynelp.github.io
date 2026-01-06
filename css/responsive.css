@@ -1,0 +1,270 @@
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE & TABLETTES
+   ============================================ */
+
+/* Tablettes (portrait) - max 768px */
+@media screen and (max-width: 768px) {
+  /* Header */
+  header {
+    padding: 10px;
+  }
+  
+  .header-content {
+    font-size: 1.5vw;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  g, d {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Bouton langue */
+  .lang-switcher {
+    top: auto;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+  
+  .lang-switcher:hover {
+    transform: translateX(-50%) scale(1.05);
+  }
+  
+  .lang-switcher:active {
+    transform: translateX(-50%) scale(0.95);
+  }
+  
+  /* Logo CV */
+  .bouton-cv {
+    top: 80px;
+    left: 10px;
+  }
+  
+  .logo-lulu {
+    width: 60px;
+    height: auto;
+  }
+  
+  /* Intro & Work sections */
+  intro, work {
+    padding: 8vw;
+  }
+  
+  .txt-intro, .txt-work {
+    flex-direction: column;
+    height: auto;
+    position: relative;
+    top: 0;
+    margin-bottom: 4vh;
+  }
+  
+  h3, h4 {
+    font-size: 12vw;
+    width: 100%;
+    margin-bottom: 3vh;
+  }
+  
+  sp {
+    font-size: 3vw;
+    width: 100%;
+  }
+  
+  .photo-moi {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 10vh;
+  }
+  
+  .img-work {
+    width: 80vw;
+  }
+  
+  video#work-video {
+    width: 100%;
+    max-height: 50vh;
+  }
+  
+  /* Footer */
+  infos-footer {
+    padding: 6vw;
+  }
+  
+  #scene-footer {
+    height: 50vh;
+  }
+  
+  h5 {
+    font-size: 3vw;
+    width: 100%;
+  }
+  
+  /* Panneau d'info des pins */
+  #pin-info-panel {
+    max-width: 200px !important;
+    padding: 15px !important;
+    font-size: 0.9em !important;
+  }
+}
+
+/* Mobiles (portrait) - max 480px */
+@media screen and (max-width: 480px) {
+  /* Header */
+  header {
+    padding: 8px;
+  }
+  
+  .header-content {
+    font-size: 2vw;
+  }
+  
+  .header-content p,
+  .header-content p1,
+  .header-content p2,
+  .header-content p3 {
+    font-size: 2.5vw;
+    line-height: 1.3;
+  }
+  
+  /* Bouton langue */
+  .lang-switcher {
+    padding: 5px 10px;
+    font-size: 9px;
+  }
+  
+  /* Logo */
+  .bouton-cv {
+    top: 70px;
+    left: 8px;
+  }
+  
+  .logo-lulu {
+    width: 50px;
+  }
+  
+  /* Hero */
+  #hero {
+    min-height: 100vh;
+  }
+  
+  .txt-hero h1 {
+    font-size: 10vw;
+  }
+  
+  .txt-hero h2 {
+    font-size: 4vw;
+  }
+  
+  /* Intro & Work */
+  intro, work {
+    padding: 6vw;
+  }
+  
+  h3, h4 {
+    font-size: 15vw;
+    margin-bottom: 2vh;
+  }
+  
+  sp {
+    font-size: 4vw;
+    line-height: 1.4;
+  }
+  
+  .photo-moi {
+    padding-bottom: 5vh;
+  }
+  
+  .img-work {
+    width: 90vw;
+  }
+  
+  video#work-video {
+    width: 100%;
+    max-height: 40vh;
+  }
+  
+  /* Footer */
+  infos-footer {
+    padding: 8vw;
+  }
+  
+  .txt-footer {
+    gap: 2vh;
+  }
+  
+  #scene-footer {
+    height: 40vh;
+  }
+  
+  h5 {
+    font-size: 4vw;
+  }
+  
+  /* Panneau d'info des pins */
+  #pin-info-panel {
+    max-width: 150px !important;
+    padding: 12px !important;
+    font-size: 0.8em !important;
+  }
+  
+  #pin-info-panel h3 {
+    font-size: 1em !important;
+    margin-bottom: 8px !important;
+  }
+  
+  #pin-info-panel p {
+    font-size: 0.85em !important;
+  }
+}
+
+/* Mobiles (paysage) */
+@media screen and (max-width: 812px) and (orientation: landscape) {
+  header {
+    padding: 6px;
+  }
+  
+  .header-content {
+    font-size: 1.2vw;
+  }
+  
+  #hero {
+    min-height: 100vh;
+  }
+  
+  .txt-intro, .txt-work {
+    height: auto;
+  }
+  
+  h3, h4 {
+    font-size: 8vw;
+  }
+  
+  sp {
+    font-size: 2vw;
+  }
+  
+  #scene-footer {
+    height: 100vh;
+  }
+}
+
+/* Amélioration des interactions tactiles */
+@media (hover: none) and (pointer: coarse) {
+  /* Augmenter les zones de clic pour les écrans tactiles */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .lang-switcher {
+    padding: 10px 16px;
+  }
+  
+  /* Désactiver les effets hover sur mobile */
+  a:hover {
+    color: #e1e1e1;
+  }
+}

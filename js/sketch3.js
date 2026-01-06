@@ -166,6 +166,12 @@
     renderer.domElement.addEventListener('mousemove', onMouseMove, false);
     renderer.domElement.addEventListener('mouseup', onMouseUp, false);
     renderer.domElement.addEventListener('mouseleave', onMouseUp, false);
+    
+    // Support tactile pour mobiles
+    renderer.domElement.addEventListener('touchstart', onTouchStart, false);
+    renderer.domElement.addEventListener('touchmove', onTouchMove, false);
+    renderer.domElement.addEventListener('touchend', onTouchEnd, false);
+    
     window.addEventListener('resize', onWindowResize, false);
     window.addEventListener('scroll', onScroll, false);
 
@@ -245,6 +251,50 @@
   }
 
   function onMouseUp() {
+    isDragging = false;
+    if (selectedPin === null) {
+      autoRotate = true;
+    }
+  }
+
+  // Gestion tactile pour mobiles
+  function onTouchStart(event) {
+    if (event.touches.length === 1) {
+      isDragging = true;
+      autoRotate = false;
+      isAnimatingToPin = false;
+      velocityX = 0;
+      velocityY = 0;
+      previousMousePosition = {
+        x: event.touches[0].clientX,
+        y: event.touches[0].clientY
+      };
+    }
+  }
+
+  function onTouchMove(event) {
+    if (!isDragging || event.touches.length !== 1) return;
+    event.preventDefault();
+
+    const deltaX = event.touches[0].clientX - previousMousePosition.x;
+    const deltaY = event.touches[0].clientY - previousMousePosition.y;
+
+    velocityY = deltaX * 0.005;
+    velocityX = deltaY * 0.005;
+
+    sphereGroup.rotation.y += velocityY;
+    sphereGroup.rotation.x += velocityX;
+
+    currentRotationX = sphereGroup.rotation.x;
+    currentRotationY = sphereGroup.rotation.y;
+
+    previousMousePosition = {
+      x: event.touches[0].clientX,
+      y: event.touches[0].clientY
+    };
+  }
+
+  function onTouchEnd() {
     isDragging = false;
     if (selectedPin === null) {
       autoRotate = true;
