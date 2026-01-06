@@ -72,6 +72,8 @@
     }
   }
 
+  let animationFinished = false;
+
   function draw() {
     // Nettoyer les rectangles précédents
     rectangles.forEach(rect => scene.remove(rect));
@@ -86,6 +88,12 @@
 
     if (frameCount > fadeStart) {
       evo = Math.max(0, evo - fadeSpeed);
+      
+      // Déclencher l'événement quand l'animation est terminée
+      if (evo <= 0 && !animationFinished) {
+        animationFinished = true;
+        window.dispatchEvent(new Event('sketch2:finished'));
+      }
     }
     
     waveRadius = (frameCount - startFrame) * 100;
