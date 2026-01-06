@@ -18,6 +18,8 @@
   let velocityY = 0;
   let friction = 0.95;
   let isAnimatingToPin = false;
+  let targetCameraZ = 0.5;
+  let targetCameraY = 0;
 
   // Définir les pins avec leurs coordonnées et informations
   // MODIFIER LES POSITIONS : Changez les valeurs x, y, z pour placer les pins partout sur la sphère
@@ -112,8 +114,8 @@
 
     // Créer la caméra
     camera = new THREE.PerspectiveCamera(75, canvasWidth / canvasHeight, 0.1, 1000);
-    camera.position.z = 4; // Position zoomée initiale
-    camera.position.y = 1.5; // Position vers le haut pour afficher le tiers supérieur
+    camera.position.z = 0.5; // Position à l'intérieur de la sphère (rayon = 3)
+    camera.position.y = 0; // Position centrée
 
     // Créer le renderer
     renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -182,6 +184,10 @@
   function animate() {
     requestAnimationFrame(animate);
 
+    // Animation de la caméra vers la position cible (basée sur le scroll)
+    camera.position.z += (targetCameraZ - camera.position.z) * 0.08;
+    camera.position.y += (targetCameraY - camera.position.y) * 0.08;
+
     // Animation vers le pin sélectionné
     if (isAnimatingToPin) {
       currentRotationX += (targetRotationX - currentRotationX) * 0.1;
@@ -206,11 +212,6 @@
       // Appliquer la friction
       velocityX *= friction;
       velocityY *= friction;
-    }
-    // Rotation automatique
-    else if (autoRotate && !isDragging && selectedPin === null) {
-      sphereGroup.rotation.y += 0.001;
-      currentRotationY = sphereGroup.rotation.y;
     }
 
     renderer.render(scene, camera);
@@ -352,8 +353,9 @@
 
   function onMouseWheel(event) {
     event.preventDefault();
-    camera.position.z += event.deltaY * 0.01;
-    camera.position.z = Math.max(0, Math.min(15, camera.position.z)); // Limiter le zoom
+    targetCameraZ += event.deltaY * 0.01;
+    // Permettre de sortir de la sphère (rayon = 3)
+    targetCameraZ = Math.max(-15, Math.min(15, targetCameraZ));
   }
 
   function onWindowResize() {
@@ -369,21 +371,45 @@
 
   function onScroll() {
     // Calculer la position du footer par rapport à la fenêtre
-    const footerTop = footerElement.getBoundingClientRect().top;
+    const footerRect = footerElement.getBoundingClientRect();
     const windowHeight = window.innerHeight;
+    const footerHeight = footerRect.height;
     
-    // Calculer le pourcentage de visibilité du footer (0 = hors écran en bas, 1 = complètement visible)
-    // On commence le dézoom quand le footer commence à apparaître
-    const scrollProgress = Math.max(0, Math.min(1, (windowHeight - footerTop) / windowHeight));
+    // Le dézoom ne commence que quand le bas du footer est proche du bas de la fenêtre
+    const footerBottom = footerRect.bottom;
     
-    // Interpoler entre les positions zoom et dézoom
-    const minZ = 1;  // Position zoomée (proche)
-    const maxZ = 10;  // Position dézoomée (loin)
-    const minY = 2; // Position haute
-    const maxY = 0;   // Position centrée
+    // scrollProgress = 0 quand le bas du footer touche le bas de l'écran
+    // scrollProgress = 1 quand on arrive à la fin de la page
+    const scrollStart = windowHeight;
+    const scrollEnd = windowHeight * 0.3;
     
-    camera.position.z = minZ + (maxZ - minZ) * scrollProgress;
-    camera.position.y = minY + (maxY - minY) * scrollProgress;
+    let scrollProgress = 0;
+    if (footerBottom <= scrollStart && footerBottom >= scrollEnd) {
+      scrollProgress = (scrollStart - footerBottom) / (scrollStart - scrollEnd);
+      scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+    } else if (footerBottom < scrollEnd) {
+      scrollProgress = 1;
+    }
+    
+    // Interpoler entre les positions - on reste à l'intérieur de la sphère (rayon = 3)
+    const minZ = 0.5;  // Position initiale à l'intérieur
+    const maxZ = 10;  // Position dézoomée mais toujours à l'intérieur
+    const minY = 0;    // Position centrée
+    const maxY = 0;    // Position centrée
+    
+    // Définir la position cible basée sur le scroll (override le zoom manuel)
+    const scrollBasedZ = minZ + (maxZ - minZ) * scrollProgress;
+    const scrollBasedY = minY + (maxY - minY) * scrollProgress;
+    
+    // Si on est hors du footer (scrollProgress = 0), revenir à la position initiale
+    if (scrollProgress === 0) {
+      targetCameraZ = minZ;
+      targetCameraY = minY;
+    } else {
+      // Sinon, utiliser la position basée sur le scroll
+      targetCameraZ = scrollBasedZ;
+      targetCameraY = scrollBasedY;
+    }
   }
 
   // Démarrer l'initialisation quand le DOM est prêt
