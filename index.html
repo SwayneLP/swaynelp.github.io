@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- empêcher le référencement -->
+<meta name="robots" content="noindex, nofollow, noarchive" />
+
+<title>PORTFOLIO</title>
+
+<!-- pour les mobiles -->
+<meta name="viewport" content="width=device-width,user-scalable=yes,initial-scale=1.0" />
+
+<!-- style -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/lang-switcher.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+
+<!-- Javascript -->
+ <script>
+  // always start at top on load / prevent browser restoring scroll
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0,0);
+  window.addEventListener('beforeunload', ()=> window.scrollTo(0,0));
+
+  // helpers
+  function preventDefault(e){ e.preventDefault(); }
+  function keyHandler(e){
+    const keys = [32,33,34,35,36,37,38,39,40];
+    if (keys.includes(e.keyCode)) preventDefault(e);
+  }
+
+  function disableScroll(){
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('wheel', preventDefault, {passive:false});
+    window.addEventListener('touchmove', preventDefault, {passive:false});
+    window.addEventListener('keydown', keyHandler, {passive:false});
+  }
+  function enableScroll(){
+    document.body.style.overflow = '';
+    window.removeEventListener('wheel', preventDefault);
+    window.removeEventListener('touchmove', preventDefault);
+    window.removeEventListener('keydown', keyHandler);
+  }
+
+  // start disabled until sketch2 signals finish
+  disableScroll();
+  window.addEventListener('sketch2:finished', enableScroll);
+</script>
+<script type="text/javascript" src="js/p5.min.js"></script>
+<script src="js/lang.js"></script>
+<script src="js/sketch2.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="js/sketch3.js" defer></script>
+<script type="text/javascript" src="js/curseur.js"></script>
+
+
+<style>
+* {
+    &::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: red;
+}
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+        background-color: transparent;
+    }
+}
+</style>
+
+</head>
+<header>
+            <div class="header-content">
+            <G>
+            <p data-i18n="copyright">© 2026 LUCAS PERNET'S PORTFOLIO. ALL RIGHTS RESERVED.</p>
+            <p1 data-i18n="designed">DESIGNED AND CODED BY LUCAS PERNET.</p1>
+            </G>
+            <D>
+            <p2><a href="mailto:PERNET.LUCAS39@GMAIL.COM">PERNET.LUCAS39@GMAIL.COM</a></p2>
+            <p3><span data-i18n="follow">FOLLOW ME ON</span> 
+                <a href="https://www.instagram.com/pernet.lucas/" target="_blank">INSTAGRAM</a> | 
+                <a href="https://www.linkedin.com/in/lucaspernetdg/" target="_blank">LINKEDIN</a> </p3>
+            </D>    
+        </div>
+</header>
+<body>
+    <a href="CV.html" class="bouton-cv" target="_blank">
+        <img class="logo-lulu" src="LOGO-BLANC.svg" alt="Logo Lucas Pernet">
+    </a>
+    <section id=hero>
+        <video autoplay muted id="videoBG">
+          <source src="ZOOM.mp4" type="video/mp4">
+        </video>
+        <video class="bg-video" autoplay muted loop playsinline>
+          <source src="WAITING.mp4" type="video/mp4">
+        </video>
+        <hero-content>
+            <PERSO>
+                <div class="txt-hero">
+                    <h1 data-i18n="title">LUCAS PERNET</h1>
+                    <h2 data-i18n="subtitle">GRAPHIC & TYPE DESIGNER</h2>
+                </div>
+            </PERSO>
+        </hero-content>
+    </section>
+
+    <intro>
+        <div class="txt-intro">
+            <h3 data-i18n="welcome-title">WELCOME TO MY PORTFOLIO</h3>
+            <sp data-i18n="welcome-text">Lucas Pernet, 21 years old, graphic designer and student in the DSAA Culture of Animated Image in Nevers. My work focuses on visual identity, editorial design, and typographic practice. My background is marked by six years of work-study experience in graphic design, within industrial companies and printing houses. I have a strong understanding of the entire graphic production chain, from concept to project execution.</sp>
+        </div>
+        <img class="photo-moi" src="Photos/photo_moi.jpg" alt="Photo Lucas Pernet">
+    </intro>
+    <work>  
+        <div class="txt-work">
+            <h3 data-i18n="work-title">VARIABLES GAME</h3>
+            <sp data-i18n="work-text">Typographic experiments around the variable font function. Design of a grotesque base typeface, with variable axes for weight, serifs, and contrast between thick and thin strokes.
+            In the future, two additional variable axes will be added for width and oblique.</sp>
+        </div>
+        <div class="img-work">
+        <video autoplay muted loop id="work-video">
+          <source src="PROJETS/complete.mp4" type="video/mp4">
+        </div>
+    </work>
+    
+<footer id="footer">
+    <infos-footer>
+        <div class="txt-footer">
+            <h4 data-i18n="footer-title">LET'S WORK TOGETHER</h4>
+            <sp data-i18n="footer-text">I'm currently available for freelance works. Feel free to reach out to discuss potential collaborations or projects.</sp>
+        </div>
+    </infos-footer>
+    <div id="scene-footer"></div>
+</footer>
+</body>
+</html>

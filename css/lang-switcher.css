@@ -1,0 +1,29 @@
+/* Bouton de changement de langue */
+.lang-switcher {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #e1e1e1;
+    border: 2px solid #e1e1e1;
+    padding: 8px 16px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.lang-switcher:hover {
+    background-color: #e1e1e1;
+    color: rgb(34, 9, 255);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.lang-switcher:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
