@@ -376,6 +376,11 @@ footer {
     padding: 0.9em 1.2em;
     border-radius: 48px;
     font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    font-variation-settings:
+        "wdth" 100,
+        "wght" 800,
+        "opsz" 32;
     font-size: 0.9em;
     color: #090909;
     white-space: nowrap;
