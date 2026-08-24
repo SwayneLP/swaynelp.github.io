@@ -461,3 +461,81 @@ footer {
 .summaryList a:hover {
     background-color: #eeeeee;
 }
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 0em 1em 0em 1em;
+        height: auto;
+        gap: 1em;
+        padding-top: 2em;
+        text-align: center;
+    }
+
+    .hero-contentMaster {
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        height: auto;
+        padding-top: 0em;
+    }
+
+    .hero-content-left {
+        width: 100%;
+        align-items: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        position: static;
+        font-size: 2.2vh;
+    }
+
+    .hero-content2 {
+        max-width: 100%;
+        align-items: center;
+        font-size: 1.2vh;
+    }
+
+    .heroP4 {
+        position: static;
+        right: auto;
+        align-items: center;
+        font-size: 1.2vh;
+    }
+
+    #canva-container {
+        height: 40svh;
+    }
+
+    #spacer {
+        height: 2em;
+    }
+
+    .projets {
+        padding: 2em 1em 2em 1em;
+    }
+
+    .projets-content {
+        flex-direction: column;
+    }
+
+    .projetsP1 {
+        position: static;
+        width: 100%;
+    }
+
+    .descProj {
+        width: 100%;
+    }
+
+    .imgProjWrapper {
+        width: 100%;
+        margin-top: 1.5em;
+        grid-template-columns: 1fr;
+    }
+
+    .vidProjWrapper {
+        width: 100%;
+        margin-top: 1.5em;
+    }
+}
