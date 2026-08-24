@@ -346,10 +346,18 @@ footer {
     overflow: hidden;
 }
 
-#backToTop {
+.floatingButtons {
     position: fixed;
     bottom: 2em;
-    right: 2em;
+    left: 2em;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1em;
+    z-index: 100;
+}
+
+#backToTop,
+#summaryBtn {
     width: 3em;
     height: 3em;
     border-radius: 50%;
@@ -359,10 +367,92 @@ footer {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 100;
     transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-#backToTop:hover {
+#summaryBtn {
+    width: auto;
+    height: auto;
+    padding: 0.9em 1.2em;
+    border-radius: 48px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 0.9em;
+    color: #090909;
+    white-space: nowrap;
+}
+
+#backToTop:hover,
+#summaryBtn:hover {
     transform: translateY(-3px);
+}
+
+#summaryOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    z-index: 200;
+}
+
+#summaryOverlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+#summaryModal {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 2em;
+    width: min(90%, 480px);
+    max-height: 80vh;
+    overflow-y: auto;
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.summaryModalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.summaryModalHeader h2 {
+    margin: 0;
+    color: #090909;
+}
+
+#summaryCloseBtn {
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    line-height: 1;
+    cursor: pointer;
+    color: #090909;
+}
+
+.summaryList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+}
+
+.summaryList a {
+    display: block;
+    color: #090909;
+    text-decoration: none;
+    padding: 0.5em 0.75em;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.summaryList a:hover {
+    background-color: #eeeeee;
 }

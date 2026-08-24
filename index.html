@@ -55,7 +55,7 @@
     </div>
     <div id="spacer"></div>
 </div>
-<div class="projets">
+<div class="projets" id="spark">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Personnal (Theorical) Project</h3>
@@ -82,7 +82,7 @@ Creation of a wordmark and brand system, including 3D renders and blueprint-styl
         </div>
     </div>
 </div>
-<div class="projets">
+<div class="projets" id="nvrrun">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Personnal (Theorical) Project</h3>
@@ -104,7 +104,7 @@ Creation of an icon and a wordmark based on one of my typefaces, “Baton”. Th
         </div>
     </div>
 </div>
-<div class="projets">
+<div class="projets" id="marathon">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Personnal (Theorical) Project</h3>
@@ -129,7 +129,7 @@ Creation of a typeface for the album title and tracklist. The tracklist is inspi
         </div>
     </div>
 </div>
-<div class="projets">
+<div class="projets" id="sony">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Personnal (Theorical) Project</h3>
@@ -153,7 +153,7 @@ The wordmark uses cut lines and curves to represent replaceable parts of the hum
         </div>
     </div>
 </div>
-<div class="projets">
+<div class="projets" id="cantstop">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Client Project</h3>
@@ -177,7 +177,7 @@ The icon is inspired by neural connections: each person is alone with their head
         </div>
     </div>
 </div>
-<div class="projets">
+<div class="projets" id="klei">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Personnal (Theorical) Project</h3>
@@ -205,7 +205,7 @@ The “KLEI” lettering has a rough, imperfect finish to preserve a handmade fe
         </div>
     </div>
 </div>
-<div class="projets">
+<div class="projets" id="baton">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Personnal Project</h3>
@@ -224,7 +224,7 @@ The “KLEI” lettering has a rough, imperfect finish to preserve a handmade fe
         </div>
     </div>
 </div>
-<div class="projets">
+<div class="projets" id="jalleau">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Personnal Project</h3>
@@ -245,7 +245,7 @@ Inspired by lapidary engraving, it refers to the first workshop I attended with 
         </div>
     </div>
 </div>
-<div class="projets">
+<div class="projets" id="arutext">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Personnal Project</h3>
@@ -266,7 +266,7 @@ Inspired by lapidary engraving, it refers to the first workshop I attended with 
         </div>
     </div>
 </div>
-<div class="projets">
+<div class="projets" id="saint-trop">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Personnal Project</h3>
@@ -284,7 +284,7 @@ Inspired by lapidary engraving, it refers to the first workshop I attended with 
         </div>
     </div>
 </div>
-<div class="projets">
+<div class="projets" id="cameratype">
     <div class="projets-content">
         <div class="projetsP1">
             <h3 class="tagsProj">Personnal Project</h3>
@@ -305,15 +305,68 @@ The program tracks the user’s index finger and thumb, allowing them to interac
 <footer>
 
 </footer>
-<button id="backToTop" aria-label="Back to top">
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="#090909" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-</button>
+<div class="floatingButtons">
+    <button id="summaryBtn" aria-label="Open summary">Summary</button>
+    <button id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="#090909" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+</div>
+<div id="summaryOverlay">
+    <div id="summaryModal">
+        <div class="summaryModalHeader">
+            <h2>Sommaire</h2>
+            <button id="summaryCloseBtn" aria-label="Close summary">&times;</button>
+        </div>
+        <ul class="summaryList">
+            <li><a href="#spark">Spark — Designing for designers</a></li>
+            <li><a href="#nvrrun">NVRRUN — Run, meet and have fun !</a></li>
+            <li><a href="#marathon">Marathon — GOOD Artist always stays long term</a></li>
+            <li><a href="#sony">Sony — We're already in a cyberpunk era</a></li>
+            <li><a href="#cantstop">Can't Stop — Party is a neural system</a></li>
+            <li><a href="#klei">Klei — Modular makes music touchable again</a></li>
+            <li><a href="#baton">Baton</a></li>
+            <li><a href="#jalleau">Jalleau</a></li>
+            <li><a href="#arutext">Arutext</a></li>
+            <li><a href="#saint-trop">Saint Trop</a></li>
+            <li><a href="#cameratype">Hand Type Program</a></li>
+        </ul>
+    </div>
+</div>
 <script>
 const backToTopBtn = document.getElementById('backToTop');
 backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+const summaryBtn = document.getElementById('summaryBtn');
+const summaryOverlay = document.getElementById('summaryOverlay');
+const summaryCloseBtn = document.getElementById('summaryCloseBtn');
+
+summaryBtn.addEventListener('click', () => {
+    summaryOverlay.classList.add('open');
+});
+
+summaryCloseBtn.addEventListener('click', () => {
+    summaryOverlay.classList.remove('open');
+});
+
+summaryOverlay.addEventListener('click', (e) => {
+    if (e.target === summaryOverlay) {
+        summaryOverlay.classList.remove('open');
+    }
+});
+
+document.querySelectorAll('.summaryList a').forEach((link) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        summaryOverlay.classList.remove('open');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 });
 </script>
 </body>
